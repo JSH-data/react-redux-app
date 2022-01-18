@@ -143,6 +143,7 @@ function App() {
     <>
       <Header title="WEB" onChangeMode={changeModeHandler} />
       <Nav data={topics} onChangeMode={changeModeHandler} />
+      테스트
       <Routes>
         <Route
           path="/"
@@ -189,7 +190,6 @@ function App() {
           }
         ></Route>
       </Routes>
-
       <Routes>
         <Route path="/" element={<Control />}></Route>
         <Route
