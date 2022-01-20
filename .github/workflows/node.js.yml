@@ -6,13 +6,12 @@ name: Elice CI
 
 on: # 어떤 경우에 아래 동작을 실행할 것인가?
   push: # 코드를 Push할때...
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs: # 실제 돌아갈 동작
   build: # 동작의 이름(변경 가능)
-
     runs-on: ubuntu-latest # 운영체제
 
     strategy: #매개변수 이름을 지을 때 사용
@@ -21,13 +20,22 @@ jobs: # 실제 돌아갈 동작
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps: # 실제 동작 과정
-    # "-" 각 동작을 의미
-    - uses: actions/checkout@v2 # 플러그인 사용
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+      # "-" 각 동작을 의미
+      - uses: actions/checkout@v2 # 플러그인 사용
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+      - run: npm ci
+      - run: npm run build --if-present
+
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x, 16.x]
+
+    step:
+      -run: npm test
