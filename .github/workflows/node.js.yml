@@ -39,4 +39,4 @@ jobs: # 실제 돌아갈 동작
         node-version: [12.x, 14.x, 16.x]
 
     steps:
-      -run: npm test
+      - run: npm test
