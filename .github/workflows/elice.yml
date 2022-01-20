@@ -18,7 +18,7 @@ jobs:
       # 이제 배포
       - uses: actions/checkout@v2 # 제작자/기능이름@버전
       - name: Use Node.js
-        uses: action/setup-node@v1
+        uses: actions/setup-node@v2
         with: 
           node-version: "14"
       - name: Install Ependencies
