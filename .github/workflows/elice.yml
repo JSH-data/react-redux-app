@@ -22,7 +22,7 @@ jobs:
         with: 
           node-version: "14"
       - name: Install Ependencies
-        run: npm CI
+        run: npm ci
       - name: Run tests
         run: npm test
       - name: Deploy to Heroku
